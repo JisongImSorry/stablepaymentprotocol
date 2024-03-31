@@ -15,7 +15,7 @@ export default function Home() {
     signTransaction,
     parseTransaction,
     publicClient,
-    sample,
+    checkIfGood,
   } = useWeb3()
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function Home() {
               onClick={() => {
                 sendCUSD(address!, '0.1').then((res: any) => {
                   if (res) {
-                    sample({
+                    checkIfGood(address!, address!, {
                       abi: stableTokenABI,
                       data: res.logs[0].data,
                       topics: res.logs[0].topics,

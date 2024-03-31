@@ -140,9 +140,12 @@ export const useWeb3 = () => {
     return res
   }
 
-  const sample = async (asd: any) => {
+  const checkIfGood = async (from: string, to: string, asd: any) => {
     let a = decodeEventLog(asd)
-    console.log(a)
+
+    if (from === (a.args as any).from! && to === (a.args as any).to) {
+      return true
+    } else return false
   }
 
   return {
@@ -152,7 +155,7 @@ export const useWeb3 = () => {
     mintMinipayNFT,
     getNFTs,
     signTransaction,
-    sample,
+    checkIfGood,
     parseTransaction,
     publicClient,
   }
